@@ -51,7 +51,7 @@ export default function About() {
               <div className={styles.valueCard}>
                 <ShieldCheck size={28} className={styles.valueIcon} />
                 <h3>Integrity</h3>
-                <p>We don't sell you what you don't need. We provide facts so you can make informed decisions.</p>
+                <p>We don&apos;t sell you what you don&apos;t need. We provide facts so you can make informed decisions.</p>
               </div>
               <div className={styles.valueCard}>
                 <Target size={28} className={styles.valueIcon} />

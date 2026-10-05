@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { MapPin, ArrowRight } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 import { SITE_CONFIG } from '@/data/config';
 import styles from './Areas.module.css';
 

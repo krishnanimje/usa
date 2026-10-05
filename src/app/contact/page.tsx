@@ -17,7 +17,7 @@ export default function Contact() {
       <div className={styles.hero}>
         <div className="container">
           <h1>Contact Corazon Air</h1>
-          <p>We're here to help with all your heating and cooling needs.</p>
+          <p>We&apos;re here to help with all your heating and cooling needs.</p>
         </div>
       </div>
 

@@ -42,8 +42,9 @@ export default function LeadActions({ leadId, currentStatus }: { leadId: string,
 
       setMessage('Status updated successfully');
       router.refresh();
-    } catch (err: any) {
-      setMessage(`Error: ${err.message}`);
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Unknown error';
+      setMessage(`Error: ${errorMessage}`);
       setStatus(currentStatus); // revert
     } finally {
       setIsUpdatingStatus(false);
@@ -72,8 +73,9 @@ export default function LeadActions({ leadId, currentStatus }: { leadId: string,
       setNote('');
       setMessage('Note added successfully');
       router.refresh();
-    } catch (err: any) {
-      setMessage(`Error: ${err.message}`);
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Unknown error';
+      setMessage(`Error: ${errorMessage}`);
     } finally {
       setIsAddingNote(false);
     }

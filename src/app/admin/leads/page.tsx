@@ -1,7 +1,7 @@
 import { createClient } from '@/utils/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import { Search, Filter, Phone, Mail, MapPin } from 'lucide-react';
+import { Search, Filter, Phone, Mail } from 'lucide-react';
 import styles from './LeadsList.module.css';
 
 export default async function LeadsPage({

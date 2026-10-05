@@ -102,7 +102,7 @@ export default function FAQ() {
               ))
             ) : (
               <div className={styles.noResults}>
-                <p>No questions found matching "{searchTerm}".</p>
+                <p>No questions found matching &quot;{searchTerm}&quot;.</p>
                 <button onClick={() => setSearchTerm('')} className="btn-outline">Clear Search</button>
               </div>
             )}

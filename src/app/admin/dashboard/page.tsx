@@ -43,7 +43,7 @@ export default async function DashboardPage() {
     <div className={styles.dashboard}>
       <header className={styles.header}>
         <h1 className={styles.title}>Dashboard Overview</h1>
-        <p className={styles.subtitle}>Welcome back. Here's what's happening with your service requests.</p>
+        <p className={styles.subtitle}>Welcome back. Here&apos;s what&apos;s happening with your service requests.</p>
       </header>
 
       <div className={styles.statsGrid}>

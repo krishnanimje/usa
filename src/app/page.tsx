@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Star, Clock, ShieldCheck, MapPin, ArrowRight, Phone, CheckCircle } from 'lucide-react';
+import { Star, Clock, MapPin, ArrowRight, Phone } from 'lucide-react';
 import styles from './page.module.css';
 import { SITE_CONFIG } from '@/data/config';
 import { Metadata } from 'next';
@@ -106,7 +106,7 @@ export default function Home() {
               <div className={styles.editorialImage}>AC Repair</div>
               <div className={styles.editorialContent}>
                 <h3>AC Repair</h3>
-                <p>Fast, reliable air conditioning repair services to restore your home's comfort when the Arizona heat hits hardest.</p>
+                <p>Fast, reliable air conditioning repair services to restore your home&apos;s comfort when the Arizona heat hits hardest.</p>
                 <div className={styles.editorialActions}>
                   <Link href="/services/ac-repair" className={styles.linkBold}>
                     Learn More <ArrowRight size={16} />
@@ -218,7 +218,7 @@ export default function Home() {
         <div className={`container ${styles.processContainer}`}>
           <div className={styles.processHeader}>
             <h2>Our Service Process</h2>
-            <p>We've streamlined our service to ensure a smooth, professional experience from your first call to job completion.</p>
+            <p>We&apos;ve streamlined our service to ensure a smooth, professional experience from your first call to job completion.</p>
           </div>
           
           <div className={styles.processGrid}>

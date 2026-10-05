@@ -35,7 +35,7 @@ export default function AdminLogin() {
         router.push('/admin/dashboard');
         router.refresh(); // Force a refresh to ensure middleware picks up the cookie correctly
       }
-    } catch (err) {
+    } catch {
       setError('An unexpected error occurred.');
     } finally {
       setLoading(false);

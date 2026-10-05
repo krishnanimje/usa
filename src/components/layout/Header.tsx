@@ -28,9 +28,11 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close menu on route change
   useEffect(() => {
-    setIsMenuOpen(false);
+    // Make asynchronous to prevent synchronous setState in effect error
+    setTimeout(() => {
+      setIsMenuOpen(false);
+    }, 0);
   }, [pathname]);
 
   const navLinks = [
