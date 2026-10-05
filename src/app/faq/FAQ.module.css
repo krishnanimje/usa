@@ -1,0 +1,152 @@
+.hero {
+  background-color: var(--color-primary);
+  color: white;
+  padding: 5rem 0;
+  text-align: center;
+}
+
+.hero h1 {
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  color: #cbd5e1;
+  font-size: 1.25rem;
+}
+
+.faqContainer {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.searchSection {
+  margin-bottom: 3rem;
+}
+
+.searchBox {
+  position: relative;
+  width: 100%;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 1.25rem 1.25rem 1.25rem 3.5rem;
+  font-size: 1.125rem;
+  border: 1px solid #cbd5e1;
+  border-radius: var(--radius-lg);
+  outline: none;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+
+.searchInput:focus {
+  border-color: var(--color-accent-blue);
+  box-shadow: 0 0 0 4px rgba(2, 102, 179, 0.1);
+}
+
+.accordionContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 4rem;
+}
+
+.accordionItem {
+  background-color: white;
+  border: 1px solid var(--color-surface-dark);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: all var(--transition-fast);
+}
+
+.accordionItem.open {
+  border-color: var(--color-accent-blue);
+  box-shadow: var(--shadow-sm);
+}
+
+.accordionHeader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.accordionHeader:hover {
+  background-color: var(--color-surface);
+}
+
+.accordionContent {
+  padding: 0 1.5rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  background-color: white;
+}
+
+.accordionItem.open .accordionContent {
+  padding: 0 1.5rem 1.5rem;
+  max-height: 500px;
+}
+
+.accordionContent p {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+.noResults {
+  text-align: center;
+  padding: 3rem;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+}
+
+.noResults p {
+  margin-bottom: 1.5rem;
+  font-size: 1.125rem;
+}
+
+.contactCard {
+  background-color: var(--color-surface);
+  padding: 3rem;
+  border-radius: var(--radius-lg);
+  text-align: center;
+  border: 1px solid var(--color-surface-dark);
+}
+
+.contactCard h3 {
+  margin-bottom: 1rem;
+}
+
+.contactCard p {
+  margin-bottom: 2rem;
+}
+
+.contactActions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .contactActions {
+    flex-direction: row;
+  }
+}

@@ -1,0 +1,107 @@
+.hero {
+  background-color: var(--color-primary);
+  color: white;
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.hero h1 {
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  color: #cbd5e1;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.servicesContainer {
+  padding: 4rem 1.5rem 6rem;
+}
+
+.servicesGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.serviceCard {
+  background-color: white;
+  border: 1px solid var(--color-surface-hover);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-sm);
+  scroll-margin-top: 100px; /* For anchor links */
+}
+
+.serviceHeader {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.iconWrapper {
+  background-color: rgba(14, 165, 233, 0.1);
+  color: var(--color-secondary);
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.serviceHeader h2 {
+  font-size: 1.5rem;
+}
+
+.serviceBody p {
+  margin-bottom: 1.5rem;
+  font-size: 1.05rem;
+}
+
+.serviceLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-secondary);
+  font-weight: 600;
+}
+
+.serviceLink:hover {
+  text-decoration: underline;
+}
+
+.ctaSection {
+  background-color: var(--color-surface);
+  text-align: center;
+  padding: 5rem 1.5rem;
+}
+
+.ctaSection h2 {
+  margin-bottom: 1rem;
+}
+
+.ctaSection p {
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btnPrimary {
+  display: inline-block;
+  background-color: var(--color-accent);
+  color: white;
+  padding: 0.875rem 1.75rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.btnPrimary:hover {
+  background-color: #ea580c;
+}
