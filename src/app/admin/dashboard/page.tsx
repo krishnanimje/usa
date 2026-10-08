@@ -12,32 +12,39 @@ export default async function DashboardPage() {
     redirect('/admin/login');
   }
 
-  // Fetch summary stats
-  const { count: newCount } = await supabase
-    .from('leads')
-    .select('*', { count: 'exact', head: true })
-    .eq('status', 'NEW');
-
-  const { count: contactedCount } = await supabase
-    .from('leads')
-    .select('*', { count: 'exact', head: true })
-    .eq('status', 'CONTACTED');
-
-  const { count: scheduledCount } = await supabase
-    .from('leads')
-    .select('*', { count: 'exact', head: true })
-    .eq('status', 'SCHEDULED');
-
-  const { count: totalCount } = await supabase
-    .from('leads')
-    .select('*', { count: 'exact', head: true });
-
-  // Fetch recent leads
-  const { data: recentLeads } = await supabase
-    .from('leads')
-    .select('id, name, service, city, created_at, status')
-    .order('created_at', { ascending: false })
-    .limit(5);
+  // Execute all queries concurrently to improve load time
+  const [
+    { count: newCount },
+    { count: contactedCount },
+    { count: scheduledCount },
+    { count: totalCount },
+    { data: recentLeads }
+  ] = await Promise.all([
+    supabase
+      .from('leads')
+      .select('*', { count: 'exact', head: true })
+      .eq('status', 'NEW'),
+    
+    supabase
+      .from('leads')
+      .select('*', { count: 'exact', head: true })
+      .eq('status', 'CONTACTED'),
+      
+    supabase
+      .from('leads')
+      .select('*', { count: 'exact', head: true })
+      .eq('status', 'SCHEDULED'),
+      
+    supabase
+      .from('leads')
+      .select('*', { count: 'exact', head: true }),
+      
+    supabase
+      .from('leads')
+      .select('id, name, service, city, created_at, status')
+      .order('created_at', { ascending: false })
+      .limit(5)
+  ]);
 
   return (
     <div className={styles.dashboard}>
