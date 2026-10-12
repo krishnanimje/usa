@@ -39,7 +39,7 @@ export default function Privacy() {
 
         <h2>4. Contact Us</h2>
         <p>
-          If you have any questions about this Privacy Policy, please contact us at {SITE_CONFIG.phone.display} or visit our <Link href="/contact" style={{ color: 'var(--color-secondary)', textDecoration: 'underline' }}>Contact Page</Link>.
+          If you have any questions about this Privacy Policy, please contact us at {SITE_CONFIG.phone.display} or visit our <Link href="/contact" style={{ color: 'var(--color-accent-blue)', textDecoration: 'underline' }}>Contact Page</Link>.
         </p>
       </div>
     </div>

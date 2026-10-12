@@ -1,8 +1,21 @@
 import { SITE_CONFIG } from '@/data/config';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, CheckCircle, Clock, ShieldCheck, Wrench } from 'lucide-react';
 import styles from './ServiceDetail.module.css';
+
+const SERVICE_DETAIL_IMAGES: Record<string, string> = {
+  'ac-repair': '/images/services/detail-ac-repair.jpg',
+  'ac-install': '/images/services/detail-ac-install.jpg',
+  'ac-service': '/images/services/detail-ac-service.jpg',
+  'heating-service': '/images/services/detail-heating.jpg',
+  'hvac-repair': '/images/services/detail-ac-repair.jpg',
+  'hvac-maintenance': '/images/services/detail-ac-service.jpg',
+  'duct-cleaning': '/images/services/detail-duct.jpg',
+  'thermostat': '/images/services/detail-thermostat.jpg',
+  'emergency': '/images/services/detail-emergency.jpg',
+};
 
 // Generate static params for all services in config
 export function generateStaticParams() {
@@ -11,8 +24,9 @@ export function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: { params: { id: string } }) {
-  const service = SITE_CONFIG.services.find((s) => s.id === params.id);
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const service = SITE_CONFIG.services.find((s) => s.id === id);
   if (!service) return { title: 'Service Not Found' };
 
   return {
@@ -24,12 +38,15 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   };
 }
 
-export default function ServicePage({ params }: { params: { id: string } }) {
-  const service = SITE_CONFIG.services.find((s) => s.id === params.id);
+export default async function ServicePage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const service = SITE_CONFIG.services.find((s) => s.id === id);
 
   if (!service) {
     notFound();
   }
+
+  const detailImage = SERVICE_DETAIL_IMAGES[id] || '/images/services/detail-ac-repair.jpg';
 
   // Common symptoms mapping for demonstration (this would normally be in the data config)
   const commonSymptoms = [
@@ -68,6 +85,17 @@ export default function ServicePage({ params }: { params: { id: string } }) {
         <div className={`container ${styles.contentGrid}`}>
           
           <div className={styles.leftCol}>
+            <div className={styles.serviceImageBanner}>
+              <Image
+                src={detailImage}
+                alt={`${service.title} in ${SITE_CONFIG.location}`}
+                fill
+                priority
+                sizes="(max-width: 992px) 100vw, 65vw"
+                style={{ objectFit: 'cover' }}
+              />
+            </div>
+
             <h2>Why Professional {service.title} Matters</h2>
             <p>
               Attempting to fix HVAC systems without professional training can lead to costly damage and safety hazards. 

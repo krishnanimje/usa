@@ -8,7 +8,6 @@ export const viewport: Viewport = {
   themeColor: "#0b1528",
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
 };
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.corazonair.com";
@@ -28,8 +27,22 @@ export const metadata: Metadata = {
     description: `Reliable Heating & Cooling Service in ${SITE_CONFIG.location}. Available ${SITE_CONFIG.hours}.`,
     url: "/",
     siteName: SITE_CONFIG.businessName,
+    images: [
+      {
+        url: "/images/branding/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: `${SITE_CONFIG.shortName} HVAC Services in ${SITE_CONFIG.location}`,
+      },
+    ],
     locale: "en_US",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${SITE_CONFIG.shortName} | HVAC Services in ${SITE_CONFIG.location}`,
+    description: `Reliable Heating & Cooling Service in ${SITE_CONFIG.location}. Available ${SITE_CONFIG.hours}.`,
+    images: ["/images/branding/og-image.jpg"],
   },
   robots: {
     index: true,
@@ -53,7 +66,7 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "HVACBusiness",
     name: SITE_CONFIG.businessName,
-    image: `${baseUrl}/api/icon/512`,
+    image: `${baseUrl}/images/branding/og-image.jpg`,
     url: baseUrl,
     telephone: SITE_CONFIG.phone.display,
     address: {

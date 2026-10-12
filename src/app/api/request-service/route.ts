@@ -18,6 +18,14 @@ export async function POST(request: Request) {
   try {
     const data = await request.json();
     
+    // Honeypot check for spam bots
+    if (data.website) {
+      return NextResponse.json(
+        { message: 'Request submitted successfully', id: 'mock' },
+        { status: 200 }
+      );
+    }
+
     // Basic validation
     if (!data.fullName || !data.phone || !data.serviceNeeded) {
       return NextResponse.json(
@@ -38,6 +46,7 @@ export async function POST(request: Request) {
           email: data.email || null,
           address: data.address || null,
           city: data.city || null,
+          state: data.state || 'AZ',
           zip: data.zipCode || null,
           service: data.serviceNeeded,
           contact_method: data.contactMethod || null,

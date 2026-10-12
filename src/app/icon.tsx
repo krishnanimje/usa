@@ -22,7 +22,7 @@ export default function Icon() {
           borderRadius: '20%',
         }}
       >
-        <div style={{ color: 'white', fontSize: 18, fontWeight: 'bold' }}>CA</div>
+        <div style={{ color: 'white', fontSize: 15, fontWeight: 'bold' }}>CA</div>
       </div>
     ),
     { ...size }

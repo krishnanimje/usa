@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { MapPin } from 'lucide-react';
 import { SITE_CONFIG } from '@/data/config';
 import styles from './Areas.module.css';
@@ -60,10 +61,22 @@ export default function Areas() {
           </div>
 
           <aside className={styles.sidebar}>
-            <div className={styles.mapPlaceholder}>
-              <div className={styles.mapOverlay}>
-                <MapPin size={32} style={{ marginBottom: '0.5rem' }} />
-                <span>Service Radius Map</span>
+            <div className={styles.mapContainer}>
+              <div className={styles.mapImageWrapper}>
+                <Image
+                  src="/images/areas/service-areas-map.jpg"
+                  alt="Corazon Air Service Coverage Radius: Glendale, Phoenix, Peoria, Sun City"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  style={{ objectFit: 'cover' }}
+                />
+              </div>
+              <div className={styles.mapCaption}>
+                <div className={styles.mapCaptionTitle}>
+                  <MapPin size={18} />
+                  <strong>Service Radius Coverage</strong>
+                </div>
+                <span>Glendale • Phoenix • Peoria • Sun City</span>
               </div>
             </div>
             

@@ -73,6 +73,19 @@
 }
 
 /* Logo */
+.logoLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.brandLogo {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
 .logo {
   font-size: 1.75rem;
   font-weight: 900;

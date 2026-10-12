@@ -37,7 +37,7 @@ export default function Terms() {
 
         <h2>5. Contact Information</h2>
         <p>
-          If you have questions regarding these terms, please contact us via our <Link href="/contact" style={{ color: 'var(--color-secondary)', textDecoration: 'underline' }}>Contact Page</Link>.
+          If you have questions regarding these terms, please contact us via our <Link href="/contact" style={{ color: 'var(--color-accent-blue)', textDecoration: 'underline' }}>Contact Page</Link>.
         </p>
       </div>
     </div>

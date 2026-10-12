@@ -7,7 +7,7 @@ import styles from './LeadsList.module.css';
 export default async function LeadsPage({
   searchParams,
 }: {
-  searchParams: { q?: string; status?: string };
+  searchParams: Promise<{ q?: string; status?: string }>;
 }) {
   // Await searchParams in Next.js 16/15 
   const resolvedSearchParams = await searchParams;

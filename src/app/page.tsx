@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Star, Clock, MapPin, ArrowRight, Phone } from 'lucide-react';
 import styles from './page.module.css';
 import { SITE_CONFIG } from '@/data/config';
@@ -41,8 +42,14 @@ export default function Home() {
 
           <div className={styles.heroRight}>
             <div className={styles.imagePlaceholder}>
-              {/* This is a placeholder for a premium HVAC/home visual */}
-              <div className={styles.imageOverlay}>Premium HVAC Imagery Here</div>
+              <Image
+                src="/images/hero/hero-technician.jpg"
+                alt="Corazon Air Certified HVAC Technician servicing AC unit in Glendale, AZ"
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                style={{ objectFit: 'cover' }}
+              />
               
               {/* Floating Trust Panel */}
               <div className={styles.floatingTrustPanel}>
@@ -103,7 +110,15 @@ export default function Home() {
             
             {/* Service 1 */}
             <div className={styles.editorialCard}>
-              <div className={styles.editorialImage}>AC Repair</div>
+              <div className={styles.editorialImage}>
+                <Image
+                  src="/images/services/ac-repair.jpg"
+                  alt="AC Repair Service in Glendale AZ"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  style={{ objectFit: 'cover' }}
+                />
+              </div>
               <div className={styles.editorialContent}>
                 <h3>AC Repair</h3>
                 <p>Fast, reliable air conditioning repair services to restore your home&apos;s comfort when the Arizona heat hits hardest.</p>
@@ -120,15 +135,23 @@ export default function Home() {
 
             {/* Service 2 */}
             <div className={styles.editorialCard}>
-              <div className={styles.editorialImage}>AC Installation</div>
+              <div className={styles.editorialImage}>
+                <Image
+                  src="/images/services/ac-install.jpg"
+                  alt="AC Installation & Replacement in Glendale AZ"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  style={{ objectFit: 'cover' }}
+                />
+              </div>
               <div className={styles.editorialContent}>
                 <h3>AC Installation & Replacement</h3>
                 <p>Professional installation of high-efficiency air conditioning systems designed to lower your energy bills and improve comfort.</p>
                 <div className={styles.editorialActions}>
-                  <Link href="/services/ac-installation" className={styles.linkBold}>
+                  <Link href="/services/ac-install" className={styles.linkBold}>
                     Learn More <ArrowRight size={16} />
                   </Link>
-                  <Link href="/request-service?service=ac-installation" className="btn-primary" style={{ padding: '0.5rem 1rem', fontSize: '0.875rem' }}>
+                  <Link href="/request-service?service=ac-install" className="btn-primary" style={{ padding: '0.5rem 1rem', fontSize: '0.875rem' }}>
                     Get a Quote
                   </Link>
                 </div>
@@ -137,15 +160,23 @@ export default function Home() {
 
             {/* Service 3 */}
             <div className={styles.editorialCard}>
-              <div className={styles.editorialImage}>AC Maintenance</div>
+              <div className={styles.editorialImage}>
+                <Image
+                  src="/images/services/ac-service.jpg"
+                  alt="AC Maintenance & Tune-Up in Glendale AZ"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  style={{ objectFit: 'cover' }}
+                />
+              </div>
               <div className={styles.editorialContent}>
                 <h3>AC Maintenance</h3>
                 <p>Preventative maintenance plans designed to extend the life of your equipment and prevent costly mid-summer breakdowns.</p>
                 <div className={styles.editorialActions}>
-                  <Link href="/services/ac-maintenance" className={styles.linkBold}>
+                  <Link href="/services/hvac-maintenance" className={styles.linkBold}>
                     Learn More <ArrowRight size={16} />
                   </Link>
-                  <Link href="/request-service?service=ac-maintenance" className="btn-primary" style={{ padding: '0.5rem 1rem', fontSize: '0.875rem' }}>
+                  <Link href="/request-service?service=hvac-maintenance" className="btn-primary" style={{ padding: '0.5rem 1rem', fontSize: '0.875rem' }}>
                     Request Service
                   </Link>
                 </div>
@@ -154,15 +185,23 @@ export default function Home() {
 
             {/* Service 4 */}
             <div className={styles.editorialCard}>
-              <div className={styles.editorialImage}>Heating Services</div>
+              <div className={styles.editorialImage}>
+                <Image
+                  src="/images/services/heating-service.jpg"
+                  alt="Heating Service & Furnace Repair in Glendale AZ"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  style={{ objectFit: 'cover' }}
+                />
+              </div>
               <div className={styles.editorialContent}>
                 <h3>Heating Services</h3>
                 <p>Dependable heating repair, maintenance, and installation for chilly Arizona winter nights.</p>
                 <div className={styles.editorialActions}>
-                  <Link href="/services/heating" className={styles.linkBold}>
+                  <Link href="/services/heating-service" className={styles.linkBold}>
                     Learn More <ArrowRight size={16} />
                   </Link>
-                  <Link href="/request-service?service=heating" className="btn-primary" style={{ padding: '0.5rem 1rem', fontSize: '0.875rem' }}>
+                  <Link href="/request-service?service=heating-service" className="btn-primary" style={{ padding: '0.5rem 1rem', fontSize: '0.875rem' }}>
                     Request Service
                   </Link>
                 </div>
@@ -171,7 +210,15 @@ export default function Home() {
             
             {/* Service 5 */}
             <div className={styles.editorialCard}>
-              <div className={styles.editorialImage}>Air Duct Cleaning</div>
+              <div className={styles.editorialImage}>
+                <Image
+                  src="/images/services/duct-cleaning.jpg"
+                  alt="Air Duct Cleaning Service in Glendale AZ"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  style={{ objectFit: 'cover' }}
+                />
+              </div>
               <div className={styles.editorialContent}>
                 <h3>Air Duct Cleaning</h3>
                 <p>Professional duct cleaning services to remove dust, debris, and improve system efficiency and airflow.</p>
@@ -188,7 +235,15 @@ export default function Home() {
 
             {/* Service 6 */}
             <div className={styles.editorialCard}>
-              <div className={styles.editorialImage}>Emergency HVAC</div>
+              <div className={styles.editorialImage}>
+                <Image
+                  src="/images/services/emergency.jpg"
+                  alt="24/7 Emergency HVAC Service in Glendale AZ"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  style={{ objectFit: 'cover' }}
+                />
+              </div>
               <div className={styles.editorialContent}>
                 <h3>Emergency HVAC Service</h3>
                 <p>24/7 rapid response for critical heating and cooling failures when you need immediate assistance.</p>

@@ -147,6 +147,7 @@
 .formGroup input[type="text"],
 .formGroup input[type="tel"],
 .formGroup input[type="email"],
+.formGroup input[type="date"],
 .formGroup select,
 .formGroup textarea {
   width: 100%;

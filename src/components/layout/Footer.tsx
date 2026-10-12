@@ -1,6 +1,7 @@
 "use client";
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { SITE_CONFIG } from '@/data/config';
 import styles from './Footer.module.css';
@@ -20,9 +21,16 @@ export default function Footer() {
         
         {/* Brand & Contact Column */}
         <div className={styles.footerBrand}>
-          <Link href="/" className={styles.logo}>
-            <span className={styles.logoText}>Corazon</span>
-            <span className={styles.logoAccent}>Air</span>
+          <Link href="/" className={styles.footerLogoLink} aria-label="Corazon Air Home">
+            <div className={styles.footerLogoBadge}>
+              <Image
+                src="/images/branding/logo.png"
+                alt="Corazon Air Heating & Cooling Logo"
+                width={155}
+                height={40}
+                style={{ height: '36px', width: 'auto', objectFit: 'contain' }}
+              />
+            </div>
           </Link>
           <p className={styles.tagline}>
             Professional HVAC services in Glendale, Arizona. Trusted, local, and reliable.

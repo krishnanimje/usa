@@ -1,6 +1,7 @@
 "use client";
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { Phone, Menu, X, ArrowRight } from 'lucide-react';
 import styles from './Header.module.css';
@@ -71,9 +72,15 @@ export default function Header() {
       <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
         <div className={`container ${styles.headerContainer}`}>
           
-          <Link href="/" className={styles.logo}>
-            <span className={styles.logoText}>Corazon</span>
-            <span className={styles.logoAccent}>Air</span>
+          <Link href="/" className={styles.logoLink} aria-label="Corazon Air Home">
+            <Image
+              src="/images/branding/logo.png"
+              alt="Corazon Air Heating & Cooling Logo"
+              width={160}
+              height={42}
+              priority
+              className={styles.brandLogo}
+            />
           </Link>
 
           {/* Desktop Navigation */}

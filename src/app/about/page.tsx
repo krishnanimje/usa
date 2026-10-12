@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { ShieldCheck, Users, Target, ArrowRight } from 'lucide-react';
 import { SITE_CONFIG } from '@/data/config';
 import styles from './About.module.css';
@@ -25,12 +26,37 @@ export default function About() {
         <div className={`container ${styles.aboutGrid}`}>
           
           <div className={styles.imageCol}>
-            {/* Placeholder for real company/team photo */}
-            <div className={styles.imagePlaceholder}>
-              <span>Company / Team Photo</span>
+            <div className={styles.imageCard}>
+              <div className={styles.imageWrapper}>
+                <Image
+                  src="/images/about/team.jpg"
+                  alt="Corazon Air Owner and Expert HVAC Service Technicians in Glendale AZ"
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 45vw"
+                  style={{ objectFit: 'cover' }}
+                />
+              </div>
+              <div className={styles.imageCaption}>
+                <strong>Corazon Air Service Team</strong>
+                <span>Certified HVAC Specialists</span>
+              </div>
             </div>
-            <div className={styles.imagePlaceholder} style={{ marginTop: '2rem', height: '300px' }}>
-              <span>Service Van Photo</span>
+
+            <div className={styles.imageCard} style={{ marginTop: '2rem' }}>
+              <div className={styles.imageWrapper}>
+                <Image
+                  src="/images/about/van.jpg"
+                  alt="Corazon Air Fully-Equipped HVAC Service Van and Fleet"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 45vw"
+                  style={{ objectFit: 'cover' }}
+                />
+              </div>
+              <div className={styles.imageCaption}>
+                <strong>Mobile Fleet & Rapid Dispatch</strong>
+                <span>Ready 24/7 Across Glendale</span>
+              </div>
             </div>
           </div>
 

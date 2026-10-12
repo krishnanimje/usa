@@ -1,11 +1,22 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { Phone, CheckCircle, AlertCircle, Shield, Clock, Star } from 'lucide-react';
 import styles from './RequestService.module.css';
 import { SITE_CONFIG } from '@/data/config';
 
-export default function RequestService() {
+const SERVICE_ALIAS_MAP: Record<string, string> = {
+  'ac-installation': 'ac-install',
+  'ac-maintenance': 'hvac-maintenance',
+  'heating': 'heating-service',
+};
+
+function RequestServiceForm() {
+  const searchParams = useSearchParams();
+  const rawServiceParam = searchParams.get('service') || '';
+  const initialService = SERVICE_ALIAS_MAP[rawServiceParam] || rawServiceParam;
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState('');
@@ -16,6 +27,7 @@ export default function RequestService() {
     setError('');
 
     const formData = new FormData(e.currentTarget);
+    formData.delete('photo');
     const data = Object.fromEntries(formData);
 
     try {
@@ -25,8 +37,10 @@ export default function RequestService() {
         body: JSON.stringify(data),
       });
 
+      const result = await response.json().catch(() => ({}));
+
       if (!response.ok) {
-        throw new Error('Failed to submit request. Please try again or call us directly.');
+        throw new Error(result.error || 'Failed to submit request. Please try again or call us directly.');
       }
 
       setIsSuccess(true);
@@ -65,14 +79,14 @@ export default function RequestService() {
   return (
     <div className={styles.pageWrapper}>
       <div className={`container ${styles.splitLayout}`}>
-        
+
         {/* Left Side: Context & Trust */}
         <div className={styles.leftColumn}>
           <h1>Request HVAC Service</h1>
           <p className={styles.subtitle}>
             Fill out the form to schedule a service visit or request a free quote for installation in {SITE_CONFIG.location}.
           </p>
-          
+
           <div className={styles.contactBlock}>
             <span>Need immediate emergency service?</span>
             <a href={SITE_CONFIG.phone.link} className={styles.phoneLink}>
@@ -115,7 +129,7 @@ export default function RequestService() {
                 {error}
               </div>
             )}
-            
+
             <form onSubmit={handleSubmit} className={styles.form}>
               <div className={styles.formRow}>
                 <div className={styles.formGroup}>
@@ -152,13 +166,20 @@ export default function RequestService() {
               <div className={styles.formRow}>
                 <div className={styles.formGroup}>
                   <label htmlFor="serviceNeeded">Service Needed <span className={styles.required}>*</span></label>
-                  <select id="serviceNeeded" name="serviceNeeded" required defaultValue="" aria-required="true">
+                  <select
+                    id="serviceNeeded"
+                    name="serviceNeeded"
+                    required
+                    defaultValue={initialService}
+                    key={initialService}
+                    aria-required="true"
+                  >
                     <option value="" disabled>Select a service...</option>
-                    <option value="ac-repair">AC Repair</option>
-                    <option value="ac-install">AC Installation / Replacement</option>
-                    <option value="ac-maintenance">AC Maintenance</option>
-                    <option value="heating">Heating</option>
-                    <option value="duct-cleaning">Air Duct Cleaning</option>
+                    {SITE_CONFIG.services.map((service) => (
+                      <option key={service.id} value={service.id}>
+                        {service.title}
+                      </option>
+                    ))}
                     <option value="other">Other / Unsure</option>
                   </select>
                 </div>
@@ -182,8 +203,15 @@ export default function RequestService() {
                   </select>
                 </div>
                 <div className={styles.formGroup}>
+                  <label htmlFor="date">Preferred Date</label>
+                  <input type="date" id="date" name="date" />
+                </div>
+              </div>
+
+              <div className={styles.formRow}>
+                <div className={styles.formGroup}>
                   <label htmlFor="time">Preferred Time</label>
-                  <select id="time" name="time">
+                  <select id="time" name="time" defaultValue="any">
                     <option value="any">Anytime</option>
                     <option value="morning">Morning</option>
                     <option value="afternoon">Afternoon</option>
@@ -194,15 +222,15 @@ export default function RequestService() {
 
               <div className={styles.formGroup}>
                 <label htmlFor="description">Problem Description</label>
-                <textarea 
-                  id="description" 
-                  name="description" 
-                  rows={4} 
+                <textarea
+                  id="description"
+                  name="description"
+                  rows={4}
                   placeholder="E.g., My AC is running but blowing warm air..."
                 ></textarea>
               </div>
-              
-              {/* Optional Photo Upload (UI Mock for now, requires multipart form handling in API) */}
+
+              {/* Optional Photo Upload */}
               <div className={styles.formGroup}>
                 <label htmlFor="photo">Optional Photo (e.g. thermostat or unit)</label>
                 <input type="file" id="photo" name="photo" accept="image/*" className={styles.fileInput} />
@@ -226,5 +254,19 @@ export default function RequestService() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function RequestService() {
+  return (
+    <Suspense fallback={
+      <div className={styles.pageWrapper}>
+        <div className="container" style={{ textAlign: 'center', padding: '5rem 0' }}>
+          <p>Loading service request form...</p>
+        </div>
+      </div>
+    }>
+      <RequestServiceForm />
+    </Suspense>
   );
 }

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Phone, MapPin, Clock, Mail, ArrowRight } from 'lucide-react';
 import { SITE_CONFIG } from '@/data/config';
 import styles from './Contact.module.css';
@@ -82,12 +83,25 @@ export default function Contact() {
               </a>
             </div>
             
-            <div className={styles.mapPlaceholder}>
-              {/* Google Maps Embed Placeholder */}
-              <div className={styles.mapOverlay}>
-                <MapPin size={32} style={{ marginBottom: '0.5rem' }} />
-                <span>Interactive Map View</span>
+            <div className={styles.mapContainer}>
+              <div className={styles.mapImageWrapper}>
+                <Image
+                  src="/images/contact/google-maps-location.jpg"
+                  alt={`Corazon Air Location: ${SITE_CONFIG.address.street}, ${SITE_CONFIG.address.city}, ${SITE_CONFIG.address.state}`}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  style={{ objectFit: 'cover' }}
+                />
               </div>
+              <a
+                href={SITE_CONFIG.address.googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.mapFooter}
+              >
+                <span>{SITE_CONFIG.address.street}, {SITE_CONFIG.address.city}</span>
+                <span className={styles.directionsBtn}>Get Directions →</span>
+              </a>
             </div>
           </div>
 

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { SITE_CONFIG } from '@/data/config';
 import { ShieldCheck, ArrowRight } from 'lucide-react';
 import styles from './Services.module.css';
@@ -9,6 +10,18 @@ export const metadata = {
   alternates: {
     canonical: '/services',
   },
+};
+
+const SERVICE_THUMBNAILS: Record<string, string> = {
+  'ac-repair': '/images/services/ac-repair.jpg',
+  'ac-service': '/images/services/ac-service.jpg',
+  'ac-install': '/images/services/ac-install.jpg',
+  'heating-service': '/images/services/heating-service.jpg',
+  'hvac-repair': '/images/services/ac-repair.jpg',
+  'hvac-maintenance': '/images/services/ac-service.jpg',
+  'duct-cleaning': '/images/services/duct-cleaning.jpg',
+  'thermostat': '/images/services/detail-thermostat.jpg',
+  'emergency': '/images/services/emergency.jpg',
 };
 
 export default function Services() {
@@ -25,17 +38,30 @@ export default function Services() {
         <div className={styles.servicesGrid}>
           {SITE_CONFIG.services.map((service) => (
             <div key={service.id} id={service.id} className={styles.serviceCard}>
-              <div className={styles.serviceHeader}>
-                <div className={styles.iconWrapper}>
-                  <ShieldCheck size={24} />
+              <div className={styles.serviceCardInner}>
+                <div className={styles.serviceCardImgWrapper}>
+                  <Image
+                    src={SERVICE_THUMBNAILS[service.id] || '/images/services/ac-repair.jpg'}
+                    alt={service.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 240px"
+                    style={{ objectFit: 'cover' }}
+                  />
                 </div>
-                <h2>{service.title}</h2>
-              </div>
-              <div className={styles.serviceBody}>
-                <p>{service.description}</p>
-                <Link href={`/services/${service.id}`} className={styles.serviceLink}>
-                  Learn more <ArrowRight size={16} />
-                </Link>
+                <div className={styles.serviceCardContent}>
+                  <div className={styles.serviceHeader}>
+                    <div className={styles.iconWrapper}>
+                      <ShieldCheck size={24} />
+                    </div>
+                    <h2>{service.title}</h2>
+                  </div>
+                  <div className={styles.serviceBody}>
+                    <p>{service.description}</p>
+                    <Link href={`/services/${service.id}`} className={styles.serviceLink}>
+                      Learn more <ArrowRight size={16} />
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
           ))}

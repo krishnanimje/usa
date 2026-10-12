@@ -8,7 +8,7 @@ import LeadActions from './LeadActions';
 export default async function LeadDetailPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
   const resolvedParams = await params;
   const leadId = resolvedParams.id;
